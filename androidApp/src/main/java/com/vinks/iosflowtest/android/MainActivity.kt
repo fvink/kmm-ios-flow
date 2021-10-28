@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.lifecycleScope
 import com.vinks.iosflowtest.Asset
 import com.vinks.iosflowtest.AssetRepository
+import com.vinks.iosflowtest.CounterViewModel
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -32,40 +33,11 @@ class MainActivity : AppCompatActivity() {
                 initialValue = Asset("asset0", 0)
             )
 
+        val counterViewModel = CounterViewModel()
+
         setContent {
-            AssetData(assetFlow = assetFlow)
+            CounterScreen(viewModel = counterViewModel)
+//            AssetData(assetFlow = assetFlow)
         }
     }
-}
-
-@Composable
-fun AssetData(assetFlow: StateFlow<Asset>) {
-    val asset by assetFlow.collectAsState()
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        AssetName(name = asset.name)
-        FaultCodeCount(count = asset.faultCodeCount)
-    }
-}
-
-@Composable
-fun AssetName(name: String) {
-    Log.d("aaa", "redrawing asset name")
-    Text(
-        text = "Asset name $name",
-        fontSize = 30.sp
-    )
-}
-
-@Composable
-fun FaultCodeCount(count: Int) {
-    Log.d("aaa", "redrawing fault code count")
-    Text(
-        text = "Fault code count: $count",
-        fontSize = 30.sp
-    )
 }

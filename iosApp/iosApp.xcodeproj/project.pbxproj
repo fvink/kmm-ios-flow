@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		2748749F272B178900F70C09 /* CounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748749E272B178900F70C09 /* CounterScreen.swift */; };
+		274874A1272B179A00F70C09 /* Collector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274874A0272B179A00F70C09 /* Collector.swift */; };
+		274874A4272B262400F70C09 /* commonMain in Resources */ = {isa = PBXBuildFile; fileRef = 274874A2272B262400F70C09 /* commonMain */; };
+		274874A5272B262400F70C09 /* iosMain in Resources */ = {isa = PBXBuildFile; fileRef = 274874A3272B262400F70C09 /* iosMain */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		CF70B6660EA9381A51B92756 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6CA3F6E6312CAC424512DC /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		2748749E272B178900F70C09 /* CounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterScreen.swift; sourceTree = "<group>"; };
+		274874A0272B179A00F70C09 /* Collector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collector.swift; sourceTree = "<group>"; };
+		274874A2272B262400F70C09 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
+		274874A3272B262400F70C09 /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 		4A754EF1843C5E2CB8BF3D4A /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		70657375D9E0E328E0DD6BF7 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,9 +63,13 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				274874A2272B262400F70C09 /* commonMain */,
+				274874A3272B262400F70C09 /* iosMain */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				2748749E272B178900F70C09 /* CounterScreen.swift */,
+				274874A0272B179A00F70C09 /* Collector.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -76,7 +88,6 @@
 				4A754EF1843C5E2CB8BF3D4A /* Pods-iosApp.debug.xcconfig */,
 				70657375D9E0E328E0DD6BF7 /* Pods-iosApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -139,6 +150,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274874A4272B262400F70C09 /* commonMain in Resources */,
+				274874A5272B262400F70C09 /* iosMain in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +188,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				274874A1272B179A00F70C09 /* Collector.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				2748749F272B178900F70C09 /* CounterScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
