@@ -10,33 +10,15 @@ import SwiftUI
 import shared
 
 
-class CounterScreenObservableObject: ObservableObject {
-    @Published var viewState = CounterViewState(count: nil, isIncrementButtonEnabled: true, isIncrementInProgress: false)
-    
-    let viewModel = CounterViewModel()
-    
-    init() {
-        viewModel.getViewState().collect(collector: Collector<CounterViewState> { viewState in
-            self.viewState = viewState
-        }) {(unit, error) in
-            
-        }
-    }
-    
-    deinit {
-        viewModel.onCleared()
-    }
-}
-
 struct CounterScreen: View {
     
-    @ObservedObject var observable = CounterScreenObservableObject()
+    @ObservedObject var observable = ObservableViewModel<CounterViewModel, CounterViewState>(viewModel: CounterViewModel())
     
     var body: some View {
-        let viewState = observable.viewState
+        let state = observable.state
         
         VStack {
-            if let count = viewState.count {
+            if let count = state.count {
                 Text("Count: \(count)")
             } else {
                 Text("Press the button to start counting")
@@ -45,16 +27,16 @@ struct CounterScreen: View {
             Spacer().frame(height: 20)
             
             ZStack {    
-                Button(viewState.isIncrementInProgress ? "" : "Increment") {
+                Button(state.isIncrementInProgress ? "" : "Increment") {
                     observable.viewModel.onIncrementButtonPress()
                 }
-                .disabled(!viewState.isIncrementButtonEnabled)
+                .disabled(!state.isIncrementButtonEnabled)
                 .frame(width: 120, height: 45)
-                .background(viewState.isIncrementButtonEnabled ? Color.blue : Color.gray)
+                .background(state.isIncrementButtonEnabled ? Color.blue : Color.gray)
                 .foregroundColor(Color.white)
                 .cornerRadius(5)
                 
-                if viewState.isIncrementInProgress {
+                if state.isIncrementInProgress {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: (Color.white)))
                 }

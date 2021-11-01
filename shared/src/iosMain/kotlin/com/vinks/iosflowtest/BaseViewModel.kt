@@ -4,15 +4,30 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
-actual open class BaseViewModel actual constructor() {
+actual abstract class BaseViewModel actual constructor() {
 
     private val viewModelJob = SupervisorJob()
-    private val viewModelScope: CoroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    protected actual val vmScope: CoroutineScope = viewModelScope
+    protected actual val vmScope: CoroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    actual abstract val state: StateFlow<ViewState>
+
+//    actual abstract val effects: Flow<ViewEffect>
 
     protected actual open fun onCleared() {
         viewModelJob.cancelChildren()
+    }
+
+    fun <T> Flow<T>.observe(onChange: ((T) -> Unit)) {
+        onEach {
+            onChange(it)
+        }.launchIn(
+            vmScope
+        )
     }
 }

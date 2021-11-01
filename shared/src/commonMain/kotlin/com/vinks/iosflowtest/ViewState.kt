@@ -1,5 +1,5 @@
 package com.vinks.iosflowtest
 
-interface ViewState
+open class ViewState
 
-object NoState : ViewState
+interface ViewEffect

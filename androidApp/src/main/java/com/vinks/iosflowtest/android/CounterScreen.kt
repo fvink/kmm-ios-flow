@@ -5,11 +5,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,28 +22,32 @@ import com.vinks.iosflowtest.CounterViewModel
 
 @Composable
 fun CounterScreen(viewModel: CounterViewModel) {
-    val uiState = viewModel.getViewState().collectAsState()
+    val state = viewModel.state.collectAsState()
 
     CounterScreenContent(
-        viewState = uiState.value,
+        state = state.value,
         onIncrementButtonPress = viewModel::onIncrementButtonPress,
-        onResetButtonPress = viewModel::onResetButtonPress
+        onResetButtonPress = viewModel::onResetButtonPress,
+        onConfirmResetButtonPress = viewModel::onConfirmResetButtonPress,
+        onCancelResetButtonPress = viewModel::onCancelResetButtonPress
     )
 }
 
 @Composable
 fun CounterScreenContent(
-    viewState: CounterViewState,
+    state: CounterViewState,
     onIncrementButtonPress: () -> Unit,
-    onResetButtonPress: () -> Unit
+    onResetButtonPress: () -> Unit,
+    onConfirmResetButtonPress: () -> Unit,
+    onCancelResetButtonPress: () -> Unit
 ) {
     Box {
         Column(
             modifier = Modifier.padding(20.dp)
         ) {
-            when (viewState.count) {
+            when (state.count) {
                 null -> Text(text = "Press the button to start counting")
-                else -> Text(text = "Count: ${viewState.count}")
+                else -> Text(text = "Count: ${state.count}")
             }
 
             Spacer(modifier = Modifier.size(20.dp))
@@ -48,9 +55,9 @@ fun CounterScreenContent(
             Button(
                 onClick = onIncrementButtonPress,
                 modifier = Modifier.size(width = 120.dp, height = 45.dp),
-                enabled = viewState.isIncrementButtonEnabled
+                enabled = state.isIncrementButtonEnabled
             ) {
-                when (viewState.isIncrementInProgress) {
+                when (state.isIncrementInProgress) {
                     true -> CircularProgressIndicator(
                         modifier = Modifier.size(30.dp),
                         color = Color.White
@@ -68,19 +75,45 @@ fun CounterScreenContent(
                 Text(text = "Reset")
             }
         }
+
+        if (state.isConfirmResetDialogShown) {
+            ConfirmResetDialog(onConfirmResetButtonPress, onCancelResetButtonPress)
+        }
     }
+}
+
+@Composable
+fun ConfirmResetDialog(onConfirm: () -> Unit, onCancel: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onCancel,
+        text = {
+            Text("Press confirm to reset the counter.")
+        },
+        confirmButton = {
+            Button(onClick = onConfirm) {
+                Text("Confirm")
+            }
+        },
+        dismissButton = {
+            Button(onClick = onCancel) {
+                Text("Cancel")
+            }
+        }
+    )
 }
 
 @Preview
 @Composable
 fun CounterScreenContentPreview() {
     CounterScreenContent(
-        viewState = CounterViewState(
+        state = CounterViewState(
             count = 5,
             isIncrementButtonEnabled = true,
             isIncrementInProgress = false
         ),
         onIncrementButtonPress = {},
-        onResetButtonPress = {}
+        onResetButtonPress = {},
+        onConfirmResetButtonPress = {},
+        onCancelResetButtonPress = {}
     )
 }
