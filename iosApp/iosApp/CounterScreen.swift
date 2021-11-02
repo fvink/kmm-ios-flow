@@ -55,13 +55,6 @@ struct CounterScreen: View {
     }
 }
 
-struct CounterContent: View {
-    
-    var body: some View {
-        Text("")
-    }
-}
-
 struct CounterScreen_Previews: PreviewProvider {
     static var previews: some View {
         CounterScreen()

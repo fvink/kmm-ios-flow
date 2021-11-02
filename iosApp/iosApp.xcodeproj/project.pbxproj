@@ -13,7 +13,6 @@
 		274874A4272B262400F70C09 /* commonMain in Resources */ = {isa = PBXBuildFile; fileRef = 274874A2272B262400F70C09 /* commonMain */; };
 		274874A5272B262400F70C09 /* iosMain in Resources */ = {isa = PBXBuildFile; fileRef = 274874A3272B262400F70C09 /* iosMain */; };
 		274FB943273026B400307E35 /* ObservableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274FB942273026B400307E35 /* ObservableViewModel.swift */; };
-		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		CF70B6660EA9381A51B92756 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6CA3F6E6312CAC424512DC /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +26,6 @@
 		4A754EF1843C5E2CB8BF3D4A /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		70657375D9E0E328E0DD6BF7 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6CA3F6E6312CAC424512DC /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -67,7 +65,6 @@
 			children = (
 				274874A2272B262400F70C09 /* commonMain */,
 				274874A3272B262400F70C09 /* iosMain */,
-				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				2748749E272B178900F70C09 /* CounterScreen.swift */,
@@ -193,7 +190,6 @@
 				274FB943273026B400307E35 /* ObservableViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				274874A1272B179A00F70C09 /* Collector.swift in Sources */,
-				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				2748749F272B178900F70C09 /* CounterScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
